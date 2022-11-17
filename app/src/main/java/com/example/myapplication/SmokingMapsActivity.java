@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,6 +17,10 @@ public class SmokingMapsActivity extends FragmentActivity implements OnMapReadyC
 
     private GoogleMap mMap;
     private ActivitySmokingMapsBinding binding;
+    View infoWindow = getLayoutInflater().inflate(R.layout.popup_map, null);
+    PopupAdapter popupAdapter = new PopupAdapter(infoWindow,
+            new DataSmoking("12", "34", "56", 78, 910));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,10 @@ public class SmokingMapsActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        mMap.setInfoWindowAdapter(popupAdapter);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng seoul = new LatLng(37.494870, 126.960763);
+        mMap.addMarker(new MarkerOptions().position(seoul).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(seoul,12));
     }
 }

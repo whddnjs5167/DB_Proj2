@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="title_activity_smoking_maps">SmokingMapsActivity</string>
+    <string name="navi">SmokingMapsActivity</string>
+    <string name="map">SmokingMapsActivity</string>
+    <string name="info">SmokingMapsActivity</string>
+
+
 </resources>
